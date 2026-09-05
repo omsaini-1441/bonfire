@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "Bonfire",
+  "short_name": "Bonfire",
+  "version": "1.0.0",
+  "description": "Free on-device check for hidden text, fake urgency, and checkout tricks on the current page.",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Bonfire",
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "options_page": "src/options.html",
+  "permissions": ["storage", "tabs", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "commands": {
+    "toggle-panel": {
+      "suggested_key": {
+        "default": "Alt+Shift+B"
+      },
+      "description": "Toggle Bonfire findings on this page"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["src/scanner.js", "src/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["src/content.css", "icons/icon32.png"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+@import url("theme.css");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  font-size: 14px;
+}
+
+main {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.brand {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.lede {
+  margin: 20px 0 0;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+
+.meta-k {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+form,
+.block {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 18px;
+}
+
+label {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+label b {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+label span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+label span b {
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.select {
+  flex-direction: column;
+  gap: 8px;
+}
+
+select {
+  font: inherit;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 8px 10px;
+  max-width: 200px;
+}
+
+.note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+button {
+  width: fit-content;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+button:hover,
+a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.saved {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ok);
+}
+
+.legal {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+a {
+  color: var(--muted);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.disclaimer {
+  margin: 16px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.legal-body h1 {
+  margin: 20px 0 8px;
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+
+.legal-body h2 {
+  margin: 28px 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.legal-body p,
+.legal-body li {
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 13px;
+}
+
+.legal-body ul {
+  padding-left: 18px;
+}
