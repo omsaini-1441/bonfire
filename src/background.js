@@ -65,11 +65,11 @@ async function inject(tabId) {
 
 function paintBadge(tabId, result) {
   if (tabId == null) return;
-  const text = result.score < 100 ? String(result.score) : "";
-  chrome.action.setBadgeText({ tabId, text });
-  const color =
-    result.score >= 85 ? "#7d9a86" : result.score >= 40 ? "#8a6a48" : "#c45c4a";
-  chrome.action.setBadgeBackgroundColor({ tabId, color });
+  chrome.action.setBadgeText({ tabId, text: String(result.score) });
+  chrome.action.setBadgeBackgroundColor({ tabId, color: "#111110" });
+  if (chrome.action.setBadgeTextColor) {
+    chrome.action.setBadgeTextColor({ tabId, color: "#eceae6" });
+  }
 }
 
 function slim(row) {

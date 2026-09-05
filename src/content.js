@@ -3,6 +3,7 @@
   window.__bonfireInjected = true;
 
   const HOST_ID = "bonfire-root";
+  const HIDE_KEY = "bonfireBadgeHidden";
   let settings = { ...BonfireScanner.defaults };
   let lastResult = null;
   let panelOpen = false;
@@ -43,30 +44,59 @@
       <div class="bf-wrap">
         <div class="bf-toast" hidden></div>
         <div class="bf-panel" hidden></div>
-        <button type="button" class="bf-badge" aria-label="Open Bonfire"></button>
+        <div class="bf-dock">
+          <button type="button" class="bf-x" aria-label="Hide score" title="Hide">×</button>
+          <button type="button" class="bf-open" aria-label="Bonfire score">
+            <span class="bf-score">—</span>
+            <span class="bf-unit">/ 100</span>
+          </button>
+        </div>
       </div>`;
     (document.documentElement || document.body).appendChild(root);
-    $(".bf-badge").addEventListener("click", () => {
+    $(".bf-open").addEventListener("click", () => {
       panelOpen = !panelOpen;
       render();
     });
+    $(".bf-x").addEventListener("click", (event) => {
+      event.stopPropagation();
+      hideBadge();
+    });
+  }
+
+  function hideBadge() {
+    try {
+      sessionStorage.setItem(HIDE_KEY, "1");
+    } catch (_) {
+      /* ignore */
+    }
+    panelOpen = false;
+    render();
+  }
+
+  function isSessionHidden() {
+    try {
+      return sessionStorage.getItem(HIDE_KEY) === "1";
+    } catch (_) {
+      return false;
+    }
   }
 
   function render() {
     if (!shadow || !lastResult) return;
-    const badge = $(".bf-badge");
+    const dock = $(".bf-dock");
     const panel = $(".bf-panel");
-    if (!settings.showPageBadge) {
-      badge.hidden = true;
-      panel.hidden = true;
-      return;
-    }
-    badge.hidden = false;
-    badge.classList.toggle("hostile", lastResult.score < 50);
-    badge.innerHTML = `<span class="bf-score">${lastResult.score}</span><span class="bf-unit">/ 100</span>`;
+    const scoreEl = $(".bf-score");
+    const open = $(".bf-open");
+    const hidden = !settings.showPageBadge || isSessionHidden();
 
-    panel.hidden = !panelOpen;
-    if (!panelOpen) return;
+    if (!dock || !scoreEl || !open) return;
+
+    dock.hidden = hidden;
+    panel.hidden = hidden || !panelOpen;
+    scoreEl.textContent = String(lastResult.score);
+    open.classList.toggle("hostile", lastResult.score < 50);
+
+    if (hidden || !panelOpen) return;
 
     const items = lastResult.findings
       .map(
@@ -82,7 +112,10 @@
       n === 0 ? "Nothing flagged" : n === 1 ? "1 issue" : `${n} issues`;
 
     panel.innerHTML = `
-      <p class="bf-title">${lastResult.score}<span class="bf-unit"> / 100</span></p>
+      <div class="bf-head">
+        <p class="bf-title">${lastResult.score}</p>
+        <span class="bf-unit">/ 100</span>
+      </div>
       <p class="bf-sub">${escapeHtml(status)} · 0 unsafe → 100 clear</p>
       <div class="bf-track"><i class="bf-thumb" style="left:${lastResult.score}%"></i></div>
       ${
