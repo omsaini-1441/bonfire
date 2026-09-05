@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bonfire settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="brand">Bonfire</p>
+        <p class="meta-k">Free · runs on this device</p>
+      </header>
+      <p class="lede">Checks the page in this browser. Nothing is uploaded. No account.</p>
+
+      <form id="form">
+        <label>
+          <input type="checkbox" name="clipboardShield" />
+          <span>
+            <b>Copy guard</b>
+            Remove hidden instructions when you copy text
+          </span>
+        </label>
+        <label>
+          <input type="checkbox" name="showPageBadge" />
+          <span>
+            <b>Page badge</b>
+            Score in the corner of websites
+          </span>
+        </label>
+        <label>
+          <input type="checkbox" name="shoppingMode" />
+          <span>
+            <b>Checkout checks</b>
+            Fake discounts, trials, pre-ticked extras
+          </span>
+        </label>
+        <label class="select">
+          <span>
+            <b>Sensitivity</b>
+            Strict finds more, including weaker signals
+          </span>
+          <select name="sensitivity">
+            <option value="normal">Normal</option>
+            <option value="strict">Strict</option>
+          </select>
+        </label>
+        <p id="saved" class="saved" hidden>Saved</p>
+      </form>
+
+      <section class="block">
+        <p class="meta-k">This device</p>
+        <p class="note">Last 5 hosts are stored locally. Not shown until you open Recent in the popup.</p>
+        <button type="button" id="clear">Clear recent and copy-guard count</button>
+        <p id="cleared" class="saved" hidden>Cleared</p>
+      </section>
+
+      <nav class="legal">
+        <a href="legal.html">Privacy &amp; terms</a>
+        <a href="../LICENSE">License</a>
+      </nav>
+      <p class="disclaimer">
+        Heuristic only. Not a guarantee, antivirus, or legal advice. Use at your own risk.
+        See Privacy &amp; terms.
+      </p>
+    </main>
+    <script src="scanner.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

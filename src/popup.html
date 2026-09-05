@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bonfire</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="brand">Bonfire</p>
+        <p id="host" class="host">—</p>
+      </header>
+
+      <section class="score" id="scoreBlock" data-state="idle">
+        <div class="score-row">
+          <span id="score" class="score-num">—</span>
+          <span class="score-unit">/ 100</span>
+        </div>
+        <p id="label" class="score-status">Checking this page</p>
+        <div class="gauge" id="gauge" hidden>
+          <div class="gauge-track" aria-hidden="true">
+            <i id="thumb" class="gauge-thumb"></i>
+          </div>
+          <div class="gauge-legend">
+            <span>0&nbsp;&nbsp;unsafe</span>
+            <span>clear&nbsp;&nbsp;100</span>
+          </div>
+        </div>
+        <p id="explain" class="explain" hidden></p>
+        <div class="actions">
+          <button type="button" id="scanPage" class="ghost" hidden>Scan this page</button>
+          <button type="button" id="openDemo" class="ghost" hidden>Practice page</button>
+        </div>
+      </section>
+
+      <p id="banner" class="banner" hidden></p>
+      <ul id="findings" class="findings"></ul>
+      <p id="empty" class="empty" hidden>No issues on this page.</p>
+
+      <div class="meta">
+        <div>
+          <span class="meta-k">Copy guard</span>
+          <span id="strips" class="meta-v">Idle</span>
+        </div>
+        <p class="meta-note">Rises when you copy and we strip hidden instructions.</p>
+      </div>
+
+      <details class="history" id="historyWrap" hidden>
+        <summary>Recent</summary>
+        <ul id="history"></ul>
+      </details>
+
+      <footer>
+        <button type="button" id="rescan">Recheck</button>
+        <a href="options.html" target="_blank" rel="noreferrer">Settings</a>
+      </footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

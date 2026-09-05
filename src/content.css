@@ -1,0 +1,151 @@
+:host {
+  all: initial;
+}
+
+.bf-wrap {
+  position: fixed;
+  z-index: 2147483646;
+  right: 16px;
+  bottom: 16px;
+  font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  color: #eceae6;
+  pointer-events: none;
+}
+
+.bf-badge,
+.bf-panel,
+.bf-toast {
+  pointer-events: auto;
+}
+
+.bf-badge {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(17, 17, 16, 0.92);
+  color: #eceae6;
+  border-radius: 2px;
+  padding: 8px 10px 7px;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+}
+
+.bf-badge:hover {
+  border-color: rgba(196, 165, 116, 0.7);
+}
+
+.bf-score {
+  font-size: 16px;
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+.bf-unit {
+  font-size: 10px;
+  color: #8c8882;
+}
+
+.bf-badge.hostile .bf-score {
+  color: #c45c4a;
+}
+
+.bf-panel {
+  position: absolute;
+  right: 0;
+  bottom: 44px;
+  width: min(300px, calc(100vw - 32px));
+  background: #111110;
+  border: 1px solid #2a2926;
+  border-radius: 2px;
+  padding: 14px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+}
+
+.bf-panel[hidden] {
+  display: none !important;
+}
+
+.bf-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+
+.bf-sub {
+  margin: 4px 0 12px;
+  font-size: 11px;
+  color: #8c8882;
+}
+
+.bf-track {
+  position: relative;
+  height: 2px;
+  margin: 0 0 14px;
+  background: linear-gradient(90deg, #c45c4a 0%, #8a6a48 48%, #7d9a86 100%);
+}
+
+.bf-thumb {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #eceae6;
+  border: 2px solid #111110;
+  transform: translate(-50%, -50%);
+}
+
+.bf-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  max-height: 200px;
+  overflow: auto;
+  border-top: 1px solid #2a2926;
+}
+
+.bf-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #2a2926;
+}
+
+.bf-item h4 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.bf-item p {
+  margin: 3px 0 0;
+  font-size: 11px;
+  color: #8c8882;
+  line-height: 1.4;
+}
+
+.bf-empty {
+  font-size: 12px;
+  color: #7d9a86;
+}
+
+.bf-toast {
+  position: absolute;
+  right: 0;
+  bottom: 44px;
+  max-width: 240px;
+  background: #111110;
+  color: #eceae6;
+  border: 1px solid #2a2926;
+  border-radius: 2px;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.bf-toast[hidden] {
+  display: none !important;
+}
